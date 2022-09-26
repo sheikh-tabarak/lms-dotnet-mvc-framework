@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LMS2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Courses">
+          <Key>
+            <PropertyRef Name="course_id" />
+          </Key>
+          <Property Name="course_id" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="course_title" Type="varchar" MaxLength="50" />
+          <Property Name="course_instructor" Type="varchar" MaxLength="50" />
+          <Property Name="course_CH" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Registration">
+          <Key>
+            <PropertyRef Name="reg_id" />
+          </Key>
+          <Property Name="reg_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="student_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="teacher_id" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="course_id" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="reg_date" Type="nchar" MaxLength="10" />
+          <Property Name="reg_fee" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="student_reg_no" />
+          </Key>
+          <Property Name="student_reg_no" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="student_name" Type="varchar" MaxLength="50" />
+          <Property Name="s_department" Type="varchar" MaxLength="50" />
+          <Property Name="s_grade" Type="char" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Teachers">
+          <Key>
+            <PropertyRef Name="instructor_id" />
+          </Key>
+          <Property Name="instructor_id" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="instructor_name" Type="varchar" MaxLength="50" />
+          <Property Name="ins_salary" Type="float" />
+          <Property Name="ins_email" Type="varchar" MaxLength="50" />
+          <Property Name="ins_phone" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'LMS2.dbo.Users' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Users">
+          <Property Name="username" Type="nchar" MaxLength="50" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
+          <Property Name="role" Type="nchar" MaxLength="10" />
+        </EntityType>-->
+        <Association Name="FK_Course_Id">
+          <End Role="Courses" Type="Self.Courses" Multiplicity="1" />
+          <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="course_id" />
+            </Principal>
+            <Dependent Role="Registration">
+              <PropertyRef Name="course_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_ID">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="student_reg_no" />
+            </Principal>
+            <Dependent Role="Registration">
+              <PropertyRef Name="student_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teacher_ID">
+          <End Role="Teachers" Type="Self.Teachers" Multiplicity="1" />
+          <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teachers">
+              <PropertyRef Name="instructor_id" />
+            </Principal>
+            <Dependent Role="Registration">
+              <PropertyRef Name="teacher_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LMS2ModelStoreContainer">
+          <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Registration" EntityType="Self.Registration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teachers" EntityType="Self.Teachers" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Course_Id" Association="Self.FK_Course_Id">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="Registration" EntitySet="Registration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_ID" Association="Self.FK_Student_ID">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Registration" EntitySet="Registration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teacher_ID" Association="Self.FK_Teacher_ID">
+            <End Role="Teachers" EntitySet="Teachers" />
+            <End Role="Registration" EntitySet="Registration" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LMS2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cours">
+          <Key>
+            <PropertyRef Name="course_id" />
+          </Key>
+          <Property Name="course_id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="course_title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="course_instructor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="course_CH" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Registrations" Relationship="Self.FK_Course_Id" FromRole="Courses" ToRole="Registration" />
+        </EntityType>
+        <EntityType Name="Registration">
+          <Key>
+            <PropertyRef Name="reg_id" />
+          </Key>
+          <Property Name="reg_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="student_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="teacher_id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="course_id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="reg_date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="reg_fee" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Cours" Relationship="Self.FK_Course_Id" FromRole="Registration" ToRole="Courses" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_Student_ID" FromRole="Registration" ToRole="Students" />
+          <NavigationProperty Name="Teacher" Relationship="Self.FK_Teacher_ID" FromRole="Registration" ToRole="Teachers" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="student_reg_no" />
+          </Key>
+          <Property Name="student_reg_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="student_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="s_department" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="s_grade" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Registrations" Relationship="Self.FK_Student_ID" FromRole="Students" ToRole="Registration" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="instructor_id" />
+          </Key>
+          <Property Name="instructor_id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="instructor_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ins_salary" Type="Double" />
+          <Property Name="ins_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ins_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Registrations" Relationship="Self.FK_Teacher_ID" FromRole="Teachers" ToRole="Registration" />
+        </EntityType>
+        <Association Name="FK_Course_Id">
+          <End Role="Courses" Type="Self.Cours" Multiplicity="1" />
+          <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="course_id" />
+            </Principal>
+            <Dependent Role="Registration">
+              <PropertyRef Name="course_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_ID">
+          <End Role="Students" Type="Self.Student" Multiplicity="1" />
+          <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="student_reg_no" />
+            </Principal>
+            <Dependent Role="Registration">
+              <PropertyRef Name="student_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teacher_ID">
+          <End Role="Teachers" Type="Self.Teacher" Multiplicity="1" />
+          <End Role="Registration" Type="Self.Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Teachers">
+              <PropertyRef Name="instructor_id" />
+            </Principal>
+            <Dependent Role="Registration">
+              <PropertyRef Name="teacher_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LMS2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Courses" EntityType="Self.Cours" />
+          <EntitySet Name="Registrations" EntityType="Self.Registration" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="Teachers" EntityType="Self.Teacher" />
+          <AssociationSet Name="FK_Course_Id" Association="Self.FK_Course_Id">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="Registration" EntitySet="Registrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_ID" Association="Self.FK_Student_ID">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Registration" EntitySet="Registrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teacher_ID" Association="Self.FK_Teacher_ID">
+            <End Role="Teachers" EntitySet="Teachers" />
+            <End Role="Registration" EntitySet="Registrations" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LMS2ModelStoreContainer" CdmEntityContainer="LMS2Entities">
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="LMS2Model.Cours">
+              <MappingFragment StoreEntitySet="Courses">
+                <ScalarProperty Name="course_id" ColumnName="course_id" />
+                <ScalarProperty Name="course_title" ColumnName="course_title" />
+                <ScalarProperty Name="course_instructor" ColumnName="course_instructor" />
+                <ScalarProperty Name="course_CH" ColumnName="course_CH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Registrations">
+            <EntityTypeMapping TypeName="LMS2Model.Registration">
+              <MappingFragment StoreEntitySet="Registration">
+                <ScalarProperty Name="reg_id" ColumnName="reg_id" />
+                <ScalarProperty Name="student_id" ColumnName="student_id" />
+                <ScalarProperty Name="teacher_id" ColumnName="teacher_id" />
+                <ScalarProperty Name="course_id" ColumnName="course_id" />
+                <ScalarProperty Name="reg_date" ColumnName="reg_date" />
+                <ScalarProperty Name="reg_fee" ColumnName="reg_fee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="LMS2Model.Student">
+              <MappingFragment StoreEntitySet="Students">
+                <ScalarProperty Name="student_reg_no" ColumnName="student_reg_no" />
+                <ScalarProperty Name="student_name" ColumnName="student_name" />
+                <ScalarProperty Name="s_department" ColumnName="s_department" />
+                <ScalarProperty Name="s_grade" ColumnName="s_grade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teachers">
+            <EntityTypeMapping TypeName="LMS2Model.Teacher">
+              <MappingFragment StoreEntitySet="Teachers">
+                <ScalarProperty Name="instructor_id" ColumnName="instructor_id" />
+                <ScalarProperty Name="instructor_name" ColumnName="instructor_name" />
+                <ScalarProperty Name="ins_salary" ColumnName="ins_salary" />
+                <ScalarProperty Name="ins_email" ColumnName="ins_email" />
+                <ScalarProperty Name="ins_phone" ColumnName="ins_phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

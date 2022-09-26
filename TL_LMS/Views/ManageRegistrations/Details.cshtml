@@ -1,0 +1,81 @@
+﻿@model TL_LMS.Models.Registration
+
+@{
+    // Layout = null;
+    ViewBag.title = "Registration Details";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div class="w-full text-white bg-amber-600 mb-10">
+    <div x-data="{ open: false }"
+         class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:flex-row md:px-6 lg:px-8">
+        <span class="backarrow" style="color:white; font-size:20px">
+            @Html.ActionLink("←", "Index")
+        </span>
+        <div class="p-4 text-left">
+            Details of Registration
+        </div>
+
+    </div>
+</div>
+    <div style="display:grid; grid-template-columns:10% 80%">
+        
+   
+      
+
+                <div class='flex group bg-amber-600 shadow-lg dark-shadow  mx-1 cursor-pointer justify-center relative h-full  w-full'>
+
+                    <div class='flex items-center px-4 my-2 py-4'>
+                        <div class='text-center'>
+                            <p class='text-gray-100 text-sm font-semibold'> Ridistration <br>Date </p>
+                            <p class='text-gray-100  mt-3 font-bold'> @Html.DisplayFor(model => model.reg_date)</p>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            
+
+        <div class="ml-5">
+            <table class="border-separate border-spacing-2 border border-amber-600 ...">
+                <thead>
+                    <tr>
+                        <th class="p-3 border border-amber-600 bg-amber-600 text-white ...">Course Title</th>
+                        <th class="p-3 border border-slate-300 ...">@Html.DisplayFor(model => model.Cours.course_title)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="p-3 border border-amber-600 bg-amber-600 text-white ...">Registration Fees</td>
+                        <td class="p-3 border border-slate-300 ..."> @Html.DisplayFor(model => model.reg_fee)</td>
+                    </tr>
+
+                    <tr>
+                        <td class="p-3 border border-amber-600 bg-amber-600 text-white ...">Student Name </td>
+                        <td class="p-3 border border-slate-300 ...">  @Html.DisplayFor(model => model.Student.student_name)</td>
+                    </tr>
+
+                    <tr>
+                        <td class="p-3 border border-amber-600 bg-amber-600 text-white ...">Instructor Name </td>
+                        <td class="p-3 border border-slate-300 ...">   @Html.DisplayFor(model => model.Teacher.instructor_name)</td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+            </div>
+
+
+    
+    </div>
+ <p>&nbsp;</p>
+</body>
+</html>

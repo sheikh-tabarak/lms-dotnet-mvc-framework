@@ -1,0 +1,68 @@
+﻿@model TL_LMS.Models.AllData
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Dashboard</title>
+
+</head>
+<body>
+
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.registrations.FirstOrDefault().reg_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.registrations.FirstOrDefault().reg_id.Count())
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.registrations.FirstOrDefault().reg_id.Count())
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.registrations.FirstOrDefault().reg_id.Count())
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.registrations.FirstOrDefault().reg_id.Count())
+            </th>
+            <th>
+
+            </th>
+        </tr>
+       
+
+
+        @foreach (var item in Model.registrations)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.reg_fee)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cours.course_title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student.student_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Teacher.instructor_name)
+                </td>
+               
+            </tr>
+        }
+
+    </table>
+
+    <div>
+    </div>
+</body>
+</html>

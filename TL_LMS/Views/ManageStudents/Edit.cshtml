@@ -1,0 +1,95 @@
+﻿@model TL_LMS.Models.Student
+
+@{
+    // Layout = null;
+    ViewBag.title = "Edit Student Details";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+
+    <style>
+
+        .btn-default {
+            background-color: #D97706;
+            color: white;
+        }
+
+            .btn-default:hover {
+                background-color: #D97706;
+                color: white;
+            }
+    </style>
+
+</head>
+<body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    
+    
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        
+    <div style="width: 500px; padding-bottom: 30px; box-shadow: 1px 1px 20px -10px;" class="form-horizontal">
+
+        <div class="w-full text-white bg-amber-600">
+            <div x-data="{ open: false }"
+                 class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:flex-row md:px-6 lg:px-8">
+                <span class="backarrow" style="color:white; font-size:20px">
+                    @Html.ActionLink("←", "Index")
+                </span>
+                <div class="p-4 text-left">
+                    Edit Course Detials
+                </div>
+
+            </div>
+        </div>
+
+        <hr />
+
+        <div style="  margin-top:5%; margin-left:20%; margin-right:10%;">
+
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.student_reg_no)
+
+            <div class="form-group">
+                <strong>Student Name:</strong>
+                <div class="">
+                    @Html.EditorFor(model => model.student_name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.student_name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <strong>Department:</strong>
+                <div class="">
+                    @Html.EditorFor(model => model.s_department, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.s_department, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <strong>Grades:</strong>
+                <div class="">
+                    @Html.EditorFor(model => model.s_grade, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.s_grade, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+        }
+
+     
+</body>
+</html>

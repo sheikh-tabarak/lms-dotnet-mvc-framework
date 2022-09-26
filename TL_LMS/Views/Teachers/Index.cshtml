@@ -1,0 +1,59 @@
+﻿@model IEnumerable<TL_LMS.Models.Teacher>
+
+@{
+//    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.instructor_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ins_salary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ins_email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ins_phone)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.instructor_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ins_salary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ins_email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ins_phone)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.instructor_id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.instructor_id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.instructor_id })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

@@ -1,0 +1,110 @@
+﻿@model IEnumerable<TL_LMS.Models.Cours>
+
+@{
+    //Layout = null;
+    ViewBag.Title = "All Courses";
+}
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>All Students</title>
+
+    <style>
+
+        .top-button a:hover {
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+
+</head>
+<body>
+    <div style="display:grid; grid-template-columns:85% 15%; margin-bottom:20px; margin-top:10px">
+        <div>
+            <p class="font-sans text-4xl font-bold text-amber-600">
+                All Courses
+            </p>
+
+
+        </div>
+        <div>
+            <button class="top-button bg-transparent hover:bg-amber-600 text-amber-600 font-semibold hover:text-white py-2 px-4 border border-orange-500 hover:border-transparent rounded">
+                @Html.ActionLink("Add New Course", "Create")
+            </button>
+        </div>
+    </div>
+
+    <div style="margin-bottom:20px" class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+        <table class=" table-fixed	min-w-full divide-y divide-white-300">
+            <thead class="bg-amber-600 text-white text-left">
+                <tr>
+                    <th scope="col" class="py-3.5 pr-3 text-left text-xl font-semibold text-white sm:pl-6">
+                        <!-- Html.DisplayNameFor(model => model.student_name)-->
+                        Course Code
+                    </th>
+                    <th scope="col" class="py-3.5 pr-3 text-left text-xl font-semibold text-white">
+                        Course Title
+                        <!--  Html.DisplayNameFor(model => model.s_department)-->
+                    </th>
+                    <th scope="col" class="px-3 py-3.5 text-left text-xl font-semibold text-white">
+                        Cridit Hours
+                        <!--Html.DisplayNameFor(model => model.s_grade)-->
+                    </th>
+                    <th scope="col" class="px-3 py-3.5 text-left text-xl font-semibold text-white">
+                        Course Instructor
+                    </th>
+                    <th scope="col" class="px-3 py-3.5 text-left text-xl font-semibold text-white">
+                        
+                    </th>
+
+                   
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="border-width:0px 0px 1px 0px" class="whitespace-nowrap px-5 py-2 text-2-xl text-gray-500">
+                        @Html.DisplayFor(modelItem => item.course_id)
+                    </td>
+                    <td style="border-width:0px 0px 1px 0px" class="whitespace-nowrap  px-5 py-2 text-2-xl text-gray-500">
+                        @Html.DisplayFor(modelItem => item.course_title)
+                    </td>
+                    <td style="border-width:0px 0px 1px 0px" class="whitespace-nowrap   px-5 py-2 text-2-xl text-gray-500">
+                        @Html.DisplayFor(modelItem => item.course_CH)
+                    </td>
+                    <td style="border-width:0px 0px 1px 0px" class="whitespace-nowrap   px-5 py-2 text-2-xl text-gray-500">
+                        @Html.DisplayFor(modelItem => item.Teacher.instructor_name)
+                    </td>
+                    <td style="border-width:0px 0px 1px 0px; text-align:right " class="whitespace-nowrap px-5 py-2 text-2-xl text-gray-500">
+                        <button style="margin-bottom:20px" class="top-button bg-transparent hover:bg-amber-600 text-amber-600 font-semibold hover:text-white py-2 px-4 border border-orange-500 hover:border-transparent rounded">
+                            <a href="https://localhost:44359/ManageCourses/Edit/@Html.DisplayFor(modelItem => item.course_id)">
+
+                                Edit
+                            </a>
+                        </button>
+
+
+                        <button style="margin-bottom:20px" class="top-button bg-transparent hover:bg-amber-600 text-amber-600 font-semibold hover:text-white py-2 px-4 border border-orange-500 hover:border-transparent rounded">
+                            <a href="https://localhost:44359/ManageCourses/Details/@Html.DisplayFor(modelItem => item.course_id)">
+
+                                Details
+                            </a>
+                        </button>
+                        <button style="margin-bottom:20px" class="top-button bg-transparent hover:bg-amber-600 text-amber-600 font-semibold hover:text-white py-2 px-4 border border-orange-500 hover:border-transparent rounded">
+                            <a href="https://localhost:44359/ManageCourses/Delete/@Html.DisplayFor(modelItem => item.course_id)">
+                                Delete
+                            </a>
+                        </button>
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</body>
+</html>

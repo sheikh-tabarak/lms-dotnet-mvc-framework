@@ -1,0 +1,128 @@
+﻿@model TL_LMS.Models.Registration
+
+@{
+    //  Layout = null;
+    ViewBag.title = "Register a New Student";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <style>
+
+        .btn-default {
+            background-color: #D97706;
+            color: white;
+        }
+
+            .btn-default:hover {
+                background-color: #D97706;
+                color: white;
+            }
+    </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div style="width: 500px; padding-bottom: 30px; box-shadow: 1px 1px 20px -10px;" class="form-horizontal">
+            <div class="w-full text-white bg-amber-600">
+                <div x-data="{ open: false }"
+                     class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:flex-row md:px-6 lg:px-8">
+                    <span class="backarrow" style="color:white; font-size:20px">
+                        @Html.ActionLink("←", "Index")
+                    </span>
+                    <div class="p-4 text-left">
+                        Registration
+                    </div>
+
+                </div>
+            </div>
+            <hr />
+
+            <div style="  margin-top:5%; margin-left:20%; margin-right:10%;">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <strong>Registration Id:</strong>
+                    <div class="">
+                        @Html.EditorFor(model => model.reg_id, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.reg_id, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <strong>Student Registration No:</strong>
+                    <div class="">
+                        @Html.DropDownList("student_id", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.student_id, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <strong>Teacher Id:</strong>
+                    <div class="">
+                        @Html.DropDownList("teacher_id", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.teacher_id, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <strong>Course Id:</strong>
+                    <div class="">
+                        @Html.DropDownList("course_id", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.course_id, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <strong>Registration Date:</strong>
+                    <div class="">
+                        @Html.EditorFor(model => model.reg_date, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.reg_date, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <strong>Registration Fee:</strong>
+                    <div class="">
+                        @Html.EditorFor(model => model.reg_fee, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.reg_fee, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+   
+</body>
+</html>

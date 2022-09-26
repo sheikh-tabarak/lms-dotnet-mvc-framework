@@ -1,0 +1,69 @@
+﻿@model IEnumerable<TL_LMS.Models.Registration>
+
+@{
+  //  Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.reg_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.reg_fee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cours.course_title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student.student_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Teacher.instructor_name)
+            </th>
+            <th>
+               
+            </th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.reg_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.reg_fee)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cours.course_title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.student_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Teacher.instructor_name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.reg_id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.reg_id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.reg_id })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

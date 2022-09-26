@@ -1,0 +1,96 @@
+﻿@model IEnumerable<TL_LMS.Models.Student>
+
+@{
+    //  Layout = null;
+    ViewBag.Title = "All Students";
+}
+
+
+    <style>
+
+        .top-button a:hover{
+            color:white;
+            text-decoration:none;
+        }
+        </style>
+
+
+<body>
+    <div style="display:grid; grid-template-columns:85% 15%; margin-bottom:20px; margin-top:10px" >
+    <div>
+        <p class="font-sans text-4xl font-bold text-amber-600">
+            All Students
+            </p>
+      
+
+    </div>
+    <div>
+        <button class="top-button bg-transparent hover:bg-amber-600 text-amber-600 font-semibold hover:text-white py-2 px-4 border border-orange-500 hover:border-transparent rounded">
+            @Html.ActionLink("Add New Student", "Create")
+        </button>
+    </div>
+        </div>
+    
+    <div style="margin-bottom:20px" class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+        <table class=" table-fixed	min-w-full divide-y divide-white-300">
+            <thead class="bg-amber-600 text-white">
+                <tr>
+                    <th scope="col" class="py-3.5 pr-3 text-left text-xl font-semibold text-white sm:pl-6">
+                        <!--    Html.DisplayNameFor(model => model.student_name)-->
+                        Roll No
+                    </th>
+
+                    <th scope="col" class="py-3.5 pr-3 text-left text-xl font-semibold text-white sm:pl-6">
+                        <!-- Html.DisplayNameFor(model => model.student_name)-->
+                        Student Name
+                    </th>
+                    <th scope="col" class="py-3.5 pr-3 text-left text-xl font-semibold text-white">
+                        Student Department
+                        <!--  Html.DisplayNameFor(model => model.s_department)-->
+                    </th>
+                    <th scope="col" class="px-3 py-3.5 text-left text-xl font-semibold text-white">
+                        Student Grades
+                        <!--Html.DisplayNameFor(model => model.s_grade)-->
+                    </th>
+                    <th scope="col" class="px-3 py-3.5 text-right text-xl font-semibold text-white">
+
+                    </th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="border-width:0px 0px 1px 0px" class="whitespace-nowrap px-5 py-2 text-2-xl text-gray-500">
+                        @Html.DisplayFor(modelItem => item.student_reg_no)
+                    </td>
+                    <td style="border-width:0px 0px 1px 0px" class="whitespace-nowrap px-5 py-2 text-2-xl text-gray-500">
+                        @Html.DisplayFor(modelItem => item.student_name)
+                    </td>
+                    <td style="border-width:0px 0px 1px 0px" class="whitespace-nowrap  px-5 py-2 text-2-xl text-gray-500">
+                        @Html.DisplayFor(modelItem => item.s_department)
+                    </td>
+                    <td style="border-width:0px 0px 1px 0px" class="whitespace-nowrap   px-5 py-2 text-2-xl text-gray-500">
+                        @Html.DisplayFor(modelItem => item.s_grade)
+                    </td>
+                    <td style="border-width:0px 0px 1px 0px; text-align:right " class="whitespace-nowrap px-5 py-2 text-2-xl text-gray-500">
+                        <button style="margin-bottom:20px" class="top-button bg-transparent hover:bg-amber-600 text-amber-600 font-semibold hover:text-white py-2 px-4 border border-orange-500 hover:border-transparent rounded">
+
+                            @Html.ActionLink("Edit", "Edit", new { id = item.student_reg_no })
+                        </button>
+
+                        <button style="margin-bottom:20px" class="top-button bg-transparent hover:bg-amber-600 text-amber-600 font-semibold hover:text-white py-2 px-4 border border-orange-500 hover:border-transparent rounded">
+
+                            @Html.ActionLink("Details", "Details", new { id = item.student_reg_no })
+                        </button>
+                        <button style="margin-bottom:20px" class="top-button bg-transparent hover:bg-amber-600 text-amber-600 font-semibold hover:text-white py-2 px-4 border border-orange-500 hover:border-transparent rounded">
+
+                            @Html.ActionLink("Delete", "Delete", new { id = item.student_reg_no })
+                        </button>
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</body>
+

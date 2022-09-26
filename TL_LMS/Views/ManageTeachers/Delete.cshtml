@@ -1,0 +1,59 @@
+﻿@model TL_LMS.Models.Teacher
+
+@{
+    //  Layout = null;
+    ViewBag.Title = "Delete "+@Html.DisplayFor(model => model.instructor_name);
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+
+
+
+
+    <div id="popup-modal" tabindex="-1" class="overflow-y-auto overflow-x-hidden top-0 right-0 left-0 z-50 md:inset-0 h-modal md:h-full" aria-modal="true" role="dialog">
+        <div class="relative w-1/2 p-4 h-full md:h-auto">
+            <div class="relative bg-white rounded-lg shadow-2xl w-full dark:bg-gray-700 py-10 px-20  mx-10 my-10 flex text-centre ">
+
+                <div class="p-6 text-left">
+                    <svg aria-hidden="true" class="mx-auto mb-4 w-14 h-14 text-gray-400 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <h3 class="mb-5 text-xl font-normal text-gray-500 dark:text-gray-400 text-left">
+                        <strong>Are you sure you want to delete @Html.DisplayFor(model => model.instructor_name) ?</strong>
+                    </h3>
+                    <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400 text-left">
+
+                        <strong>Id: </strong> @Html.DisplayFor(model => model.instructor_id)
+                        <br> <strong>Email: </strong> @Html.DisplayFor(model => model.ins_email)
+                        <br> <strong>Phone no.: </strong> @Html.DisplayFor(model => model.ins_phone)
+                        <br>  <strong>Salary: </strong> @Html.DisplayFor(model => model.ins_salary)
+                    </h3>
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div style="display:inline" class="form-actions  focus:outline-none text-white bg-amber-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-lg px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+                            <input class="bg-danger" type="submit" value="Yes, I am" class="btn btn-default" />
+                        </div>
+                        <button data-modal-toggle="popup-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200  rounded-lg border border-gray-200 text-lg font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+
+                            @Html.ActionLink("Cancel", "Index")
+                        </button>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+</html>

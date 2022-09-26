@@ -1,0 +1,120 @@
+﻿@model TL_LMS.Models.AllData
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+
+
+    <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+    </style>
+</head>
+<body>
+
+
+
+    <div class="student-registrations">
+       
+    </div>
+    <div style="display:grid; grid-template-columns:35% 65%">
+
+        <div>
+            <div class="shadow-lg rounded-lg overflow-hidden">
+                <div class="py-3 px-5 bg-amber-600 text-white">Analysis Dashboard</div>
+                <canvas class="p-10" id="chartDoughnut"></canvas>
+            </div>
+
+            <!-- Required chart.js -->
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+            <!-- Chart doughnut -->
+
+            <script>
+
+
+            /**/
+
+                /**/
+
+
+
+            const registraion = document.getElementsByClassName("student-registrations");
+
+            console.log(registraion);
+            const dataDoughnut = {
+                labels: ["Students", "Teachers", "Courses", "Registations"],
+                datasets: [
+
+                    {
+
+
+
+
+
+
+                        label: "My First Dataset",
+                        data: [@TempData["totalstudent"],@TempData["totalteachers"],@TempData["totalcourses"],@TempData["totalregistrations"]],
+
+                        backgroundColor: [
+                            "rgb(218, 165, 32)",
+                            "rgb(255, 255, 0)",
+                            "rgb(255, 127, 80)",
+                            "rgb(250, 128, 114)",
+
+                        ],
+                        hoverOffset: 4,
+                    },
+                ],
+            };
+
+            const configDoughnut = {
+                type: "doughnut",
+                data: dataDoughnut,
+                options: {},
+            };
+
+
+
+            var chartBar = new Chart(
+                document.getElementById("chartDoughnut"),
+                configDoughnut
+            );
+            </script>
+
+        </div>
+
+
+        <div>
+          <p>  @ViewBag.totalstudent</p>
+
+        </div>
+
+    </div>
+
+
+
+
+</body>
+</html>

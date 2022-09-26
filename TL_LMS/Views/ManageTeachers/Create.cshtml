@@ -1,0 +1,108 @@
+﻿@model TL_LMS.Models.Teacher
+
+@{
+    //   Layout = null;
+    ViewBag.title = "Add New Teacher";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+
+
+    <style>
+
+        .btn-default {
+            background-color: #D97706;
+            color: white;
+        }
+
+            .btn-default:hover {
+                background-color: #D97706;
+                color: white;
+            }
+    </style>
+
+</head>
+<body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    
+    
+    @using (Html.BeginForm()) 
+    {
+        @Html.AntiForgeryToken()
+        
+    <div style="width: 500px; padding-bottom: 30px; box-shadow: 1px 1px 20px -10px;" class="form-horizontal">
+        <div class="w-full text-white bg-amber-600">
+            <div x-data="{ open: false }"
+                 class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:flex-row md:px-6 lg:px-8">
+                <span class="backarrow" style="color:white; font-size:20px">
+                    @Html.ActionLink("←", "Index")
+                </span>
+                <div class="p-4 text-left">
+                    Add New Student
+                </div>
+
+            </div>
+        </div>
+
+        <hr />
+        <div style="  margin-top:5%; margin-left:20%; margin-right:10%;">
+
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <strong>Instructor Id:</strong>
+                <div class="">
+                    @Html.EditorFor(model => model.instructor_id, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.instructor_id, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <strong>Instructor Name:</strong>
+                <div class="">
+                    @Html.EditorFor(model => model.instructor_name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.instructor_name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <strong>Salary:</strong>
+                <div class="">
+                    @Html.EditorFor(model => model.ins_salary, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ins_salary, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <strong>Email:</strong>
+                <div class="">
+                    @Html.EditorFor(model => model.ins_email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ins_email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <strong>Phone No:</strong>
+                <div class="">
+                    @Html.EditorFor(model => model.ins_phone, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ins_phone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+        }
+
+     
+</body>
+</html>

@@ -1,0 +1,199 @@
+﻿
+@model IEnumerable<TL_LMS.Models.Registration>
+
+@{
+    // Layout = null;
+    ViewBag.Title = "All Registrations";
+
+}<html>
+<head>
+    <style>
+
+        .top-button a:hover {
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+
+
+    
+    </head>
+<body>
+
+    
+        <!--  <section class="text-gray-600 body-font">
+        -->
+        <div class="container px-5 py-5 mx-auto">
+
+            <div class="flex flex-wrap -m-4 text-center">
+                <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+                    <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+
+                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-amber-600 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
+                            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"></path>
+                        </svg>
+                        <h2 class="title-font font-medium text-3xl text-gray-900">
+                         
+                           @ViewBag.registrations
+                        </h2>
+                        <p class="leading-relaxed">Registrations</p>
+                    </div>
+                </div>
+
+                <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+                    <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-amber-600 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
+                            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"></path>
+                        </svg>
+                        <h2 class="title-font font-medium text-3xl text-gray-900">
+
+                            @ViewBag.students
+
+                        </h2>
+                        <p class="leading-relaxed">Students</p>
+                    </div>
+                </div>
+
+                <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+                    <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-amber-600 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
+                            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"></path>
+                        </svg>
+                        <h2 class="title-font font-medium text-3xl text-gray-900">
+
+                            
+                            @ViewBag.teachers
+
+                           
+                        </h2>
+                        <p class="leading-relaxed">Teachers</p>
+                    </div>
+                </div>
+
+                <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+                    <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-amber-600 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
+                            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"></path>
+                        </svg>
+                        <h2 class="title-font font-medium text-3xl text-gray-900">
+
+                          
+                            @ViewBag.courses
+                           
+
+                        </h2>
+                        <p class="leading-relaxed">Courses</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- </section> -->
+
+
+
+
+
+        <div style="display:grid; grid-template-columns:85% 15%; margin-bottom:20px; margin-top:10px">
+            <div>
+                <p class="font-sans text-4xl font-bold text-amber-600">
+                    All Registrations
+                </p>
+
+
+            </div>
+            <div>
+                <button class="top-button bg-transparent hover:bg-amber-600 text-amber-600 font-semibold hover:text-white py-2 px-4 border border-orange-500 hover:border-transparent rounded">
+                    @Html.ActionLink("Register a Student", "Create")
+                </button>
+            </div>
+        </div>
+
+        <div style="margin-bottom:20px" class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+            <table class=" table-fixed	min-w-full divide-y divide-white-300">
+                <thead class="bg-amber-600 text-white">
+                    <tr>
+                        <th scope="col" class="py-3.5 pr-3 text-left text-xl font-semibold text-white sm:pl-6">
+                            <!-- Html.DisplayNameFor(model => model.student_name)-->
+                            Reg. Id
+                        </th>
+                        <th scope="col" class="py-3.5 pr-3 text-left text-xl font-semibold text-white sm:pl-6">
+                            <!-- Html.DisplayNameFor(model => model.student_name)-->
+                            Date
+                        </th>
+
+
+                        <th scope="col" class="py-3.5 pr-3 text-left text-xl font-semibold text-white">
+                            Students
+                            <!--  Html.DisplayNameFor(model => model.s_department)-->
+                        </th>
+                        <th scope="col" class="px-3 py-3.5 text-left text-xl font-semibold text-white">
+                            Courses
+                            <!--Html.DisplayNameFor(model => model.s_grade)-->
+                        </th>
+
+                        <th scope="col" class="px-3 py-3.5 text-left text-xl font-semibold text-white">
+                            Instructor
+                        </th>
+
+                        <th scope="col" class="px-3 py-3.5 text-left text-xl font-semibold text-white">
+                            Reg. Fees
+                        </th>
+                        <th scope="col" class="px-3 py-3.5 text-left text-xl font-semibold text-white">
+
+                        </th>
+                    </tr>
+                </thead>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="border-width:0px 0px 1px 0px" class="whitespace-nowrap px-5 py-2 text-2-xl text-gray-500">
+                            @Html.DisplayFor(modelItem => item.reg_id)
+                        </td>
+                        <td style="border-width:0px 0px 1px 0px" class="whitespace-nowrap px-5 py-2 text-2-xl text-gray-500">
+                            @Html.DisplayFor(modelItem => item.reg_date)
+                        </td>
+
+                        <td style="border-width:0px 0px 1px 0px" class="whitespace-nowrap  px-5 py-2 text-2-xl text-gray-500">
+                            @Html.DisplayFor(modelItem => item.Student.student_name)
+                        </td>
+                        <td style="border-width:0px 0px 1px 0px" class="whitespace-nowrap   px-5 py-2 text-2-xl text-gray-500">
+                            @Html.DisplayFor(modelItem => item.Cours.course_title)
+                        </td>
+                        <td style="border-width:0px 0px 1px 0px" class="whitespace-nowrap   px-5 py-2 text-2-xl text-gray-500">
+                            @Html.DisplayFor(modelItem => item.Teacher.instructor_name)
+                        </td>
+                        <td style="border-width:0px 0px 1px 0px" class="whitespace-nowrap   px-5 py-2 text-2-xl text-gray-500">
+                            @Html.DisplayFor(modelItem => item.reg_fee)
+                        </td>
+                        <td style="border-width:0px 0px 1px 0px; text-align:right " class="whitespace-nowrap px-5 py-2 text-2-xl text-gray-500">
+                            <!--        <button style="margin-bottom:20px" class="top-button bg-transparent hover:bg-amber-600 text-amber-600 font-semibold hover:text-white py-2 px-4 border border-orange-500 hover:border-transparent rounded">
+
+                Html.ActionLink("Edit", "Edit", new { id = item.reg_id })
+            </button>-->
+
+                            <button style="margin-bottom:20px" class="top-button bg-transparent hover:bg-amber-600 text-amber-600 font-semibold hover:text-white py-2 px-4 border border-orange-500 hover:border-transparent rounded">
+
+                                @Html.ActionLink("Details", "Details", new { id = item.reg_id })
+                            </button>
+                            <button style="margin-bottom:20px" class="top-button bg-transparent hover:bg-amber-600 text-amber-600 font-semibold hover:text-white py-2 px-4 border border-orange-500 hover:border-transparent rounded">
+
+                                @Html.ActionLink("Delete", "Delete", new { id = item.reg_id })
+                            </button>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+</body>
+
+</html>

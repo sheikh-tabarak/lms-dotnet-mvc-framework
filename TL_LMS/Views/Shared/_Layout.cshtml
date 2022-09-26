@@ -1,0 +1,264 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - LMS By Tech Legion</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+
+    <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                    extend: {
+                        colors: {
+                            clifford: '#da373d',
+                        }
+                    }
+                }
+            }
+    </script>
+
+    <style type="text/tailwindcss">
+    </style>
+
+    <style>
+
+
+        .backarrow a:hover {
+            background-color: white;
+            color: #D97706;
+            padding: 0px 4px 4px 4px;
+            margin-top: -4px;
+        }
+
+        .backarrow a {
+            background-color: white;
+            color: #D97706;
+            padding: 0px 4px 4px 4px;
+            text-decoration: none;
+            margin-top:-4px;
+         
+        }
+
+        .edit-button a {
+            padding: 0px 0px 0px 0px;
+            color:white;
+
+        }
+
+
+        .edit-button a:hover {
+            padding: 0px 0px 0px 0px;
+            color: white;
+            text-decoration:none;
+        }
+
+
+        .links li a {
+            background-color: black;
+            border: solid 1px black;
+            border-width: 0px 0px 3px 0px;
+            padding: 15px;
+            text-decoration: none;
+        }
+
+            .links li a:hover{
+                background-color: black;
+                border: solid #D97706;
+                border-width: 0px 0px 3px 0px;
+                color: #D97706;
+                padding: 15px;
+                text-decoration:none;
+            }
+
+
+            .links li a:active {
+                background-color: black;
+                border: solid #D97706;
+                border-width: 0px 0px 3px 0px;
+                color: #D97706;
+                padding: 15px;
+            }
+
+
+            .links li {
+                background-color: black;
+   
+            }
+
+
+
+        </style>
+
+</head>
+<body>
+
+    <!-- Tailwind Nav Bar p-2.5 w-max  min-h-screen min-h-screen-->
+
+    <div class=" bg-gray-100">
+        <div class="fixed sidebar  w-[4.35rem] border-r w-56 bg-black shadow-lg">
+            <div class="flex h-screen flex-col justify-between pt-5 pb-6">
+                <div>
+
+                    <ul class=" mt-6 space-y-2 tracking-wide">
+                        <li class="min-w-max">
+                            <a href="/AllData/Index" aria-label="dashboard" class="hover:no-underline relative flex items-center space-x-4  to-cyan-400 px-4 py-3 text-white group-hover:text-white">
+                                <svg class="-ml-1 h-6 w-6" viewBox="0 0 24 24" fill="none">
+                                    <path d="M6 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8ZM6 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-1Z" class="fill-current text-amber-600 dark:fill-slate-600"></path>
+                                    <path d="M13 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2V8Z" class="fill-current text-cyan-200 group-hover:text-amber-600"></path>
+                                    <path d="M13 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-1Z" class="fill-current group-hover:text-amber-600"></path>
+                                </svg>
+                                <span class="text-white no-underline group-hover:no-underline group-hover:text-white-700">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="min-w-max">
+                            <a href="/ManageCourses" class="hover:no-underline bg group flex items-center space-x-4 rounded-full px-4 py-3 text-white-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path class="fill-current text-gray-300 group-hover:text-cyan-300" fill-rule="evenodd" d="M2 6a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1H8a3 3 0 00-3 3v1.5a1.5 1.5 0 01-3 0V6z" clip-rule="evenodd" />
+                                    <path class="fill-current text-gray-600 group-hover:text-cyan-600" d="M6 12a2 2 0 012-2h8a2 2 0 012 2v2a2 2 0 01-2 2H2h2a2 2 0 002-2v-2z" />
+                                </svg>
+                                <span class="text-white hover:no-underline group-hover:text-white-700">Courses</span>
+                            </a>
+                        </li>
+                        <li class="min-w-max">
+                            <a href="https://localhost:44359/ManageRegistrations" class="hover:no-underline group flex items-center space-x-4 rounded-md px-4 py-3 text-white-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path class="fill-current text-gray-600 group-hover:text-cyan-600" fill-rule="evenodd" d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z" clip-rule="evenodd" />
+                                    <path class="fill-current text-gray-300 group-hover:text-cyan-300" d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z" />
+                                </svg>
+                                <span class="text-white group-hover:text-white-700">Registrations</span>
+                            </a>
+                        </li>
+                        <li class="min-w-max">
+                            <a href="https://localhost:44359/ManageStudents" class="hover:no-underline group flex items-center space-x-4 rounded-md px-4 py-3 text-white-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path class="fill-current text-gray-600 group-hover:text-cyan-600" d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" />
+                                    <path class="fill-current text-gray-300 group-hover:text-cyan-300" d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
+                                </svg>
+                                <span class="text-white group-hover:text-white-700">Students</span>
+                            </a>
+                        </li>
+                        <li class="min-w-max">
+                            <a href="https://localhost:44359/ManageTeachers" class="hover:no-underline group flex items-center space-x-4 rounded-md px-4 py-3 text-white-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path class="fill-current text-gray-300 group-hover:text-cyan-300" d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
+                                    <path class="fill-current text-gray-600 group-hover:text-cyan-600" fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd" />
+                                </svg>
+                                <span class="no-underline text-white group-hover:text-white-700">Teachers
+                            </a>
+                        </li>
+
+                        <li style="padding-top:230px" class="min-w-max">
+                            <a href="https://localhost:44359/Authenticate/Login" class="hover:no-underline group flex items-center space-x-4 rounded-md px-4 py-3 text-white-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path class="fill-current text-gray-300 group-hover:text-cyan-300" d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
+                                    <path class="fill-current text-gray-600 group-hover:text-cyan-600" fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd" />
+                                </svg>
+                                <span class="no-underline text-white group-hover:text-white-700">Logout
+                                    </span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Tailwind Nav Bar-->
+
+
+
+    <div class="= navbar bg-black navbar-fixed-top">
+        <div class="container text-white">
+            <div class="navbar-header">
+
+                <a href="/" style="">  <img style="max-height:70px" src="/logonew.png" alt=""></a>
+            </div>
+
+            <div class="navbar-collapse collapse">
+                <ul style="padding:10px; background-color:black" class="links nav navbar-nav">
+
+                    <!--   <li>Html.ActionLink("Home", "Index", "Home") </li>-->
+                    <li><a href="/Home/About">About Us</a></li>
+                    <li><a href="/Home/Team">Our Team</a></li>
+                   
+                </ul>
+
+              
+            </div>
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--
+
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { {At the rate } class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>Html.ActionLink("Students", "Index", "ManageStudents")</li>
+                    <li>Html.ActionLink("Teachers", "Index", "ManageTeachers")</li>
+                    <li>Html.ActionLink("Courses", "Index", "ManageCourses")</li>
+                    <li>Html.ActionLink("Registrations", "Index", "ManageRegistrations")</li>
+                </ul>
+            </div>
+        </div>
+    </div> 
+        -->
+    <div style="padding-left:155px; padding-top:30px; padding-right:55px">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year Tech Legion Softwares | All Right Reserved</p>
+        </footer>
+    </div>
+
+
+
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

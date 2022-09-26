@@ -1,0 +1,95 @@
+﻿@model TL_LMS.Models.AllData
+@{
+    ViewBag.Title = "Index";
+}
+
+<body>
+    
+
+
+
+    <ul class="nav nav-pills">
+        <li class="nav-item ">
+            <a class="nav-link active rounded-0" data-toggle="pill" href="#home">Regstration</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link rounded-0" data-toggle="pill" href="#menu1">Teachers</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link rounded-0" data-toggle="pill" href="#menu2">Courses</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane container active p-0" id="home">
+            <h5 class="text-uppercase p-2 text-center">List of Employee</h5>
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark text-white">
+                    <tr>
+                        <th>@Html.DisplayNameFor(m => Model.registrations.FirstOrDefault().reg_id)</th>
+                      
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var employee in Model.registrations)
+                    {
+                        <tr>
+                            <td>@employee.reg_id</td>
+                          
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane container fade p-0" id="menu1">
+            <h5 class="text-uppercase p-2 text-center">Teachers</h5>
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark text-white">
+                    <tr>
+                        <th>@Html.DisplayNameFor(m => Model.teachers.FirstOrDefault().instructor_name)</th>
+                      
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var employee in Model.teachers)
+                    {
+                        <tr>
+                         
+                            <td>@employee.instructor_name</td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane container fade p-0" id="menu2">
+            <h5 class="text-uppercase p-2 text-center">Courses</h5>
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark text-white">
+                    <tr>
+                        <th>@Html.DisplayNameFor(m => Model.courses.FirstOrDefault().course_title)</th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var employee in Model.courses)
+                    {
+                        <tr>
+                           
+                            <td>@employee.course_title<</td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+
+
+
+
+</body>
+</html>

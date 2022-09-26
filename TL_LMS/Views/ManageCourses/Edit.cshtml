@@ -1,0 +1,94 @@
+﻿@model TL_LMS.Models.Cours
+
+@{
+    //   Layout = null;
+    ViewBag.title = "Edit Course Details";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+
+    <style>
+
+        .btn-default {
+            background-color: #D97706;
+            color: white;
+        }
+
+            .btn-default:hover {
+                background-color: #D97706;
+                color: white;
+            }
+    </style>
+
+</head>
+<body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    
+    
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        
+    <div style="width: 500px; padding-bottom: 30px; box-shadow: 1px 1px 20px -10px;" class="form-horizontal">
+        <div class="w-full text-white bg-amber-600">
+            <div x-data="{ open: false }"
+                 class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:flex-row md:px-6 lg:px-8">
+                <span class="backarrow" style="color:white; font-size:20px">
+                    @Html.ActionLink("←", "Index")
+                </span>
+                <div class="p-4 text-left">
+                    Edit Course Detials
+                </div>
+
+            </div>
+        </div>
+        <hr />
+
+        <div style="  margin-top:5%; margin-left:20%; margin-right:10%;">
+
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.course_id)
+
+            <div class="form-group">
+                <strong>Course Title:</strong>
+                <div class="">
+                    @Html.EditorFor(model => model.course_title, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.course_title, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <strong>Course Instructor:</strong>
+                <div class="">
+                    @Html.DropDownList("course_instructor", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.course_instructor, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <strong>Cridit Hours:</strong>
+                <div class="">
+                    @Html.EditorFor(model => model.course_CH, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.course_CH, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+        }
+
+      
+</body>
+</html>
